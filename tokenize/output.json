@@ -1,0 +1,4041 @@
+[
+    {
+        "input": [
+            {
+                "type": "number",
+                "value": "123"
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "number",
+                "value": "123.123"
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "number",
+                "value": "123"
+            },
+            {
+                "type": "variable",
+                "value": ","
+            },
+            {
+                "type": "number",
+                "value": "123E-2"
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "variable",
+                "value": "f"
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "variable",
+                "value": "f'"
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "variable",
+                "value": "f"
+            },
+            {
+                "type": "variable",
+                "value": "\\{"
+            },
+            {
+                "type": "variable",
+                "value": "a"
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "variable",
+                "value": "f"
+            },
+            {
+                "type": "variable",
+                "value": "\\pi"
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "function",
+                "name": "sin",
+                "sub_eq": [
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x"
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "function",
+                "name": "cos",
+                "sub_eq": [
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x"
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "function",
+                "name": "log",
+                "sub_eq": [
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x"
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "function",
+                "name": "ln",
+                "sub_eq": [
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x"
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "function",
+                "name": "sum",
+                "sub_eq": [
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x"
+                        }
+                    ],
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x{y"
+                        }
+                    ],
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x{y{z"
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "function",
+                "name": "int",
+                "sub_eq": [
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x"
+                        }
+                    ],
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x{y"
+                        }
+                    ],
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x{y{z"
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "function",
+                "name": "sqrt",
+                "sub_eq": [
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x"
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "function",
+                "name": "abs",
+                "sub_eq": [
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x"
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "variable",
+                "value": "a"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "+"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "b"
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "variable",
+                "value": "a"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "-"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "b"
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "variable",
+                "value": "a"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "*"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "b"
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "variable",
+                "value": "a"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "/"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "b"
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "variable",
+                "value": "a"
+            },
+            {
+                "type": "operator",
+                "value": "^"
+            },
+            {
+                "type": "variable",
+                "value": "b"
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "variable",
+                "value": "a"
+            },
+            {
+                "type": "operator",
+                "value": "_"
+            },
+            {
+                "type": "variable",
+                "value": "b"
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "text",
+                "value": "text \" test2"
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "braces",
+                "blocks": [
+                    {
+                        "type": "number",
+                        "value": "2"
+                    },
+                    {
+                        "type": "variable",
+                        "value": "x"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "brackets",
+                "blocks": [
+                    {
+                        "type": "variable",
+                        "value": "kg"
+                    }
+                ],
+                "is_unit": true
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "variable",
+                "value": "F"
+            },
+            {
+                "type": "operator",
+                "value": "_"
+            },
+            {
+                "type": "variable",
+                "value": "z"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "="
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "number",
+                "value": "123"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "m"
+            },
+            {
+                "type": "operator",
+                "value": "/"
+            },
+            {
+                "type": "variable",
+                "value": "s"
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "variable",
+                "value": "F"
+            },
+            {
+                "type": "operator",
+                "value": "_"
+            },
+            {
+                "type": "variable",
+                "value": "aarde"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "="
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "number",
+                "value": "123.123"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "m"
+            },
+            {
+                "type": "operator",
+                "value": "/"
+            },
+            {
+                "type": "braces",
+                "blocks": [
+                    {
+                        "type": "variable",
+                        "value": "s"
+                    },
+                    {
+                        "type": "operator",
+                        "value": "^"
+                    },
+                    {
+                        "type": "number",
+                        "value": "2"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "variable",
+                "value": "F"
+            },
+            {
+                "type": "operator",
+                "value": "_"
+            },
+            {
+                "type": "text",
+                "value": "aarde"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "="
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "number",
+                "value": "123"
+            },
+            {
+                "type": "variable",
+                "value": ","
+            },
+            {
+                "type": "number",
+                "value": "123E-2"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "m"
+            },
+            {
+                "type": "operator",
+                "value": "/"
+            },
+            {
+                "type": "braces",
+                "blocks": [
+                    {
+                        "type": "variable",
+                        "value": "s"
+                    },
+                    {
+                        "type": "operator",
+                        "value": "/"
+                    },
+                    {
+                        "type": "variable",
+                        "value": "kg"
+                    },
+                    {
+                        "type": "operator",
+                        "value": "^"
+                    },
+                    {
+                        "type": "number",
+                        "value": "2"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "variable",
+                "value": "F"
+            },
+            {
+                "type": "operator",
+                "value": "_"
+            },
+            {
+                "type": "variable",
+                "value": "z"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "="
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "number",
+                "value": "123"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "m"
+            },
+            {
+                "type": "operator",
+                "value": "/"
+            },
+            {
+                "type": "variable",
+                "value": "s"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "+"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "number",
+                "value": "456"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "m"
+            },
+            {
+                "type": "operator",
+                "value": "/"
+            },
+            {
+                "type": "braces",
+                "blocks": [
+                    {
+                        "type": "variable",
+                        "value": "s"
+                    },
+                    {
+                        "type": "operator",
+                        "value": "^"
+                    },
+                    {
+                        "type": "number",
+                        "value": "2"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "variable",
+                "value": "F"
+            },
+            {
+                "type": "operator",
+                "value": "_"
+            },
+            {
+                "type": "variable",
+                "value": "aarde"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "="
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "number",
+                "value": "123.123"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "m"
+            },
+            {
+                "type": "operator",
+                "value": "/"
+            },
+            {
+                "type": "braces",
+                "blocks": [
+                    {
+                        "type": "variable",
+                        "value": "s"
+                    },
+                    {
+                        "type": "operator",
+                        "value": "/"
+                    },
+                    {
+                        "type": "variable",
+                        "value": "kg"
+                    },
+                    {
+                        "type": "operator",
+                        "value": "^"
+                    },
+                    {
+                        "type": "number",
+                        "value": "2"
+                    }
+                ]
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "-"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "number",
+                "value": "456.789"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "m"
+            },
+            {
+                "type": "operator",
+                "value": "/"
+            },
+            {
+                "type": "variable",
+                "value": "s"
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "variable",
+                "value": "F"
+            },
+            {
+                "type": "operator",
+                "value": "_"
+            },
+            {
+                "type": "text",
+                "value": "aarde"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "="
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "number",
+                "value": "123"
+            },
+            {
+                "type": "variable",
+                "value": ","
+            },
+            {
+                "type": "number",
+                "value": "123E-2"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "m"
+            },
+            {
+                "type": "operator",
+                "value": "/"
+            },
+            {
+                "type": "braces",
+                "blocks": [
+                    {
+                        "type": "variable",
+                        "value": "s"
+                    },
+                    {
+                        "type": "operator",
+                        "value": "/"
+                    },
+                    {
+                        "type": "variable",
+                        "value": "kg"
+                    },
+                    {
+                        "type": "operator",
+                        "value": "^"
+                    },
+                    {
+                        "type": "number",
+                        "value": "2"
+                    }
+                ]
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "*"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "number",
+                "value": "456.789"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "m"
+            },
+            {
+                "type": "operator",
+                "value": "/"
+            },
+            {
+                "type": "variable",
+                "value": "s"
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "variable",
+                "value": "F"
+            },
+            {
+                "type": "operator",
+                "value": "_"
+            },
+            {
+                "type": "variable",
+                "value": "z"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "="
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "number",
+                "value": "123"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "m"
+            },
+            {
+                "type": "operator",
+                "value": "/"
+            },
+            {
+                "type": "variable",
+                "value": "s"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "/"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "number",
+                "value": "456"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "m"
+            },
+            {
+                "type": "operator",
+                "value": "/"
+            },
+            {
+                "type": "braces",
+                "blocks": [
+                    {
+                        "type": "variable",
+                        "value": "s"
+                    },
+                    {
+                        "type": "operator",
+                        "value": "^"
+                    },
+                    {
+                        "type": "number",
+                        "value": "2"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "variable",
+                "value": "F"
+            },
+            {
+                "type": "operator",
+                "value": "_"
+            },
+            {
+                "type": "variable",
+                "value": "aarde"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "="
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "number",
+                "value": "123.123"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "m"
+            },
+            {
+                "type": "operator",
+                "value": "/"
+            },
+            {
+                "type": "braces",
+                "blocks": [
+                    {
+                        "type": "variable",
+                        "value": "s"
+                    },
+                    {
+                        "type": "operator",
+                        "value": "/"
+                    },
+                    {
+                        "type": "variable",
+                        "value": "kg"
+                    },
+                    {
+                        "type": "operator",
+                        "value": "^"
+                    },
+                    {
+                        "type": "number",
+                        "value": "2"
+                    }
+                ]
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "^"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "number",
+                "value": "456.789"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "m"
+            },
+            {
+                "type": "operator",
+                "value": "/"
+            },
+            {
+                "type": "variable",
+                "value": "s"
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "variable",
+                "value": "F"
+            },
+            {
+                "type": "operator",
+                "value": "_"
+            },
+            {
+                "type": "text",
+                "value": "aarde"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "="
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "number",
+                "value": "123"
+            },
+            {
+                "type": "variable",
+                "value": ","
+            },
+            {
+                "type": "number",
+                "value": "123E-2"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "m"
+            },
+            {
+                "type": "operator",
+                "value": "/"
+            },
+            {
+                "type": "braces",
+                "blocks": [
+                    {
+                        "type": "variable",
+                        "value": "s"
+                    },
+                    {
+                        "type": "operator",
+                        "value": "/"
+                    },
+                    {
+                        "type": "variable",
+                        "value": "kg"
+                    },
+                    {
+                        "type": "operator",
+                        "value": "^"
+                    },
+                    {
+                        "type": "number",
+                        "value": "2"
+                    }
+                ]
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "_"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "number",
+                "value": "456.789"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "m"
+            },
+            {
+                "type": "operator",
+                "value": "/"
+            },
+            {
+                "type": "variable",
+                "value": "s"
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "variable",
+                "value": "a"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "="
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "b"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "+"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "c"
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "variable",
+                "value": "a"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "="
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "b"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "-"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "c"
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "variable",
+                "value": "a"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "="
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "b"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "*"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "c"
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "variable",
+                "value": "a"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "="
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "b"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "/"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "c"
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "variable",
+                "value": "a"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "="
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "b"
+            },
+            {
+                "type": "operator",
+                "value": "^"
+            },
+            {
+                "type": "variable",
+                "value": "c"
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "variable",
+                "value": "a"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "="
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "b"
+            },
+            {
+                "type": "operator",
+                "value": "_"
+            },
+            {
+                "type": "variable",
+                "value": "c"
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "function",
+                "name": "sin",
+                "sub_eq": [
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x"
+                        }
+                    ]
+                ]
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "+"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "function",
+                "name": "cos",
+                "sub_eq": [
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x"
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "function",
+                "name": "ln",
+                "sub_eq": [
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x"
+                        }
+                    ]
+                ]
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "*"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "function",
+                "name": "log",
+                "sub_eq": [
+                    [
+                        {
+                            "type": "variable",
+                            "value": "base"
+                        }
+                    ],
+                    [
+                        {
+                            "type": "variable",
+                            "value": "base{x"
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "function",
+                "name": "sum",
+                "sub_eq": [
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x"
+                        }
+                    ],
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x{y"
+                        }
+                    ],
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x{y{z"
+                        }
+                    ]
+                ]
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "+"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "function",
+                "name": "int",
+                "sub_eq": [
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x"
+                        }
+                    ],
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x{y"
+                        }
+                    ],
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x{y{z"
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "function",
+                "name": "sqrt",
+                "sub_eq": [
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x"
+                        }
+                    ]
+                ]
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "-"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "function",
+                "name": "abs",
+                "sub_eq": [
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x"
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "variable",
+                "value": "F"
+            },
+            {
+                "type": "operator",
+                "value": "_"
+            },
+            {
+                "type": "variable",
+                "value": "z"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "="
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "number",
+                "value": "123"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "m"
+            },
+            {
+                "type": "operator",
+                "value": "/"
+            },
+            {
+                "type": "variable",
+                "value": "s"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "+"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "number",
+                "value": "456"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "m"
+            },
+            {
+                "type": "operator",
+                "value": "/"
+            },
+            {
+                "type": "braces",
+                "blocks": [
+                    {
+                        "type": "variable",
+                        "value": "s"
+                    },
+                    {
+                        "type": "operator",
+                        "value": "^"
+                    },
+                    {
+                        "type": "number",
+                        "value": "2"
+                    }
+                ]
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "*"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "number",
+                "value": "789"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "m"
+            },
+            {
+                "type": "operator",
+                "value": "/"
+            },
+            {
+                "type": "braces",
+                "blocks": [
+                    {
+                        "type": "variable",
+                        "value": "s"
+                    },
+                    {
+                        "type": "operator",
+                        "value": "/"
+                    },
+                    {
+                        "type": "variable",
+                        "value": "kg"
+                    },
+                    {
+                        "type": "operator",
+                        "value": "^"
+                    },
+                    {
+                        "type": "number",
+                        "value": "2"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "variable",
+                "value": "F"
+            },
+            {
+                "type": "operator",
+                "value": "_"
+            },
+            {
+                "type": "variable",
+                "value": "aarde"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "="
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "number",
+                "value": "123.123"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "m"
+            },
+            {
+                "type": "operator",
+                "value": "/"
+            },
+            {
+                "type": "braces",
+                "blocks": [
+                    {
+                        "type": "variable",
+                        "value": "s"
+                    },
+                    {
+                        "type": "operator",
+                        "value": "/"
+                    },
+                    {
+                        "type": "variable",
+                        "value": "kg"
+                    },
+                    {
+                        "type": "operator",
+                        "value": "^"
+                    },
+                    {
+                        "type": "number",
+                        "value": "2"
+                    }
+                ]
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "-"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "number",
+                "value": "456.789"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "m"
+            },
+            {
+                "type": "operator",
+                "value": "/"
+            },
+            {
+                "type": "variable",
+                "value": "s"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "^"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "number",
+                "value": "789"
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "variable",
+                "value": "F"
+            },
+            {
+                "type": "operator",
+                "value": "_"
+            },
+            {
+                "type": "text",
+                "value": "aarde"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "="
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "number",
+                "value": "123"
+            },
+            {
+                "type": "variable",
+                "value": ","
+            },
+            {
+                "type": "number",
+                "value": "123E-2"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "m"
+            },
+            {
+                "type": "operator",
+                "value": "/"
+            },
+            {
+                "type": "braces",
+                "blocks": [
+                    {
+                        "type": "variable",
+                        "value": "s"
+                    },
+                    {
+                        "type": "operator",
+                        "value": "/"
+                    },
+                    {
+                        "type": "variable",
+                        "value": "kg"
+                    },
+                    {
+                        "type": "operator",
+                        "value": "^"
+                    },
+                    {
+                        "type": "number",
+                        "value": "2"
+                    }
+                ]
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "_"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "number",
+                "value": "456.789"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "m"
+            },
+            {
+                "type": "operator",
+                "value": "/"
+            },
+            {
+                "type": "variable",
+                "value": "s"
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "variable",
+                "value": "F"
+            },
+            {
+                "type": "operator",
+                "value": "_"
+            },
+            {
+                "type": "variable",
+                "value": "z"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "="
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "function",
+                "name": "sin",
+                "sub_eq": [
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x"
+                        }
+                    ]
+                ]
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "+"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "function",
+                "name": "cos",
+                "sub_eq": [
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x"
+                        }
+                    ]
+                ]
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "*"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "function",
+                "name": "ln",
+                "sub_eq": [
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x"
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "variable",
+                "value": "F"
+            },
+            {
+                "type": "operator",
+                "value": "_"
+            },
+            {
+                "type": "variable",
+                "value": "aarde"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "="
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "function",
+                "name": "log",
+                "sub_eq": [
+                    [
+                        {
+                            "type": "variable",
+                            "value": "base"
+                        }
+                    ],
+                    [
+                        {
+                            "type": "variable",
+                            "value": "base{x"
+                        }
+                    ]
+                ]
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "-"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "function",
+                "name": "abs",
+                "sub_eq": [
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x"
+                        }
+                    ]
+                ]
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "/"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "number",
+                "value": "789"
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "variable",
+                "value": "F"
+            },
+            {
+                "type": "operator",
+                "value": "_"
+            },
+            {
+                "type": "text",
+                "value": "aarde"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "="
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "function",
+                "name": "sum",
+                "sub_eq": [
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x"
+                        }
+                    ],
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x{y"
+                        }
+                    ],
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x{y{z"
+                        }
+                    ]
+                ]
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "*"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "function",
+                "name": "int",
+                "sub_eq": [
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x"
+                        }
+                    ],
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x{y"
+                        }
+                    ],
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x{y{z"
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "variable",
+                "value": "F"
+            },
+            {
+                "type": "operator",
+                "value": "_"
+            },
+            {
+                "type": "variable",
+                "value": "z"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "="
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "function",
+                "name": "sqrt",
+                "sub_eq": [
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x"
+                        }
+                    ]
+                ]
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "+"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "function",
+                "name": "abs",
+                "sub_eq": [
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x"
+                        }
+                    ]
+                ]
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "-"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "number",
+                "value": "123"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "m"
+            },
+            {
+                "type": "operator",
+                "value": "/"
+            },
+            {
+                "type": "variable",
+                "value": "s"
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "variable",
+                "value": "F"
+            },
+            {
+                "type": "operator",
+                "value": "_"
+            },
+            {
+                "type": "variable",
+                "value": "aarde"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "="
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "number",
+                "value": "123.123"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "m"
+            },
+            {
+                "type": "operator",
+                "value": "/"
+            },
+            {
+                "type": "braces",
+                "blocks": [
+                    {
+                        "type": "variable",
+                        "value": "s"
+                    },
+                    {
+                        "type": "operator",
+                        "value": "/"
+                    },
+                    {
+                        "type": "variable",
+                        "value": "kg"
+                    },
+                    {
+                        "type": "operator",
+                        "value": "^"
+                    },
+                    {
+                        "type": "number",
+                        "value": "2"
+                    }
+                ]
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "+"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "number",
+                "value": "456.789"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "m"
+            },
+            {
+                "type": "operator",
+                "value": "/"
+            },
+            {
+                "type": "variable",
+                "value": "s"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "^"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "number",
+                "value": "789"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "*"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "function",
+                "name": "sin",
+                "sub_eq": [
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x"
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "variable",
+                "value": "F"
+            },
+            {
+                "type": "operator",
+                "value": "_"
+            },
+            {
+                "type": "text",
+                "value": "aarde"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "="
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "number",
+                "value": "123"
+            },
+            {
+                "type": "variable",
+                "value": ","
+            },
+            {
+                "type": "number",
+                "value": "123E-2"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "m"
+            },
+            {
+                "type": "operator",
+                "value": "/"
+            },
+            {
+                "type": "braces",
+                "blocks": [
+                    {
+                        "type": "variable",
+                        "value": "s"
+                    },
+                    {
+                        "type": "operator",
+                        "value": "/"
+                    },
+                    {
+                        "type": "variable",
+                        "value": "kg"
+                    },
+                    {
+                        "type": "operator",
+                        "value": "^"
+                    },
+                    {
+                        "type": "number",
+                        "value": "2"
+                    }
+                ]
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "_"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "number",
+                "value": "456.789"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "m"
+            },
+            {
+                "type": "operator",
+                "value": "/"
+            },
+            {
+                "type": "variable",
+                "value": "s"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "+"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "function",
+                "name": "cos",
+                "sub_eq": [
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x"
+                        }
+                    ]
+                ]
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "-"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "function",
+                "name": "log",
+                "sub_eq": [
+                    [
+                        {
+                            "type": "variable",
+                            "value": "base"
+                        }
+                    ],
+                    [
+                        {
+                            "type": "variable",
+                            "value": "base{x"
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "variable",
+                "value": "F"
+            },
+            {
+                "type": "operator",
+                "value": "_"
+            },
+            {
+                "type": "variable",
+                "value": "z"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "="
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "number",
+                "value": "123"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "m"
+            },
+            {
+                "type": "operator",
+                "value": "/"
+            },
+            {
+                "type": "variable",
+                "value": "s"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "+"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "number",
+                "value": "456"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "m"
+            },
+            {
+                "type": "operator",
+                "value": "/"
+            },
+            {
+                "type": "braces",
+                "blocks": [
+                    {
+                        "type": "variable",
+                        "value": "s"
+                    },
+                    {
+                        "type": "operator",
+                        "value": "^"
+                    },
+                    {
+                        "type": "number",
+                        "value": "2"
+                    }
+                ]
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "*"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "number",
+                "value": "789"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "m"
+            },
+            {
+                "type": "operator",
+                "value": "/"
+            },
+            {
+                "type": "braces",
+                "blocks": [
+                    {
+                        "type": "variable",
+                        "value": "s"
+                    },
+                    {
+                        "type": "operator",
+                        "value": "/"
+                    },
+                    {
+                        "type": "variable",
+                        "value": "kg"
+                    },
+                    {
+                        "type": "operator",
+                        "value": "^"
+                    },
+                    {
+                        "type": "number",
+                        "value": "2"
+                    }
+                ]
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "-"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "function",
+                "name": "int",
+                "sub_eq": [
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x"
+                        }
+                    ],
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x{y"
+                        }
+                    ],
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x{y{z"
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "variable",
+                "value": "F"
+            },
+            {
+                "type": "operator",
+                "value": "_"
+            },
+            {
+                "type": "variable",
+                "value": "aarde"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "="
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "number",
+                "value": "123.123"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "m"
+            },
+            {
+                "type": "operator",
+                "value": "/"
+            },
+            {
+                "type": "braces",
+                "blocks": [
+                    {
+                        "type": "variable",
+                        "value": "s"
+                    },
+                    {
+                        "type": "operator",
+                        "value": "/"
+                    },
+                    {
+                        "type": "variable",
+                        "value": "kg"
+                    },
+                    {
+                        "type": "operator",
+                        "value": "^"
+                    },
+                    {
+                        "type": "number",
+                        "value": "2"
+                    }
+                ]
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "-"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "number",
+                "value": "456.789"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "m"
+            },
+            {
+                "type": "operator",
+                "value": "/"
+            },
+            {
+                "type": "variable",
+                "value": "s"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "^"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "number",
+                "value": "789"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "+"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "function",
+                "name": "sum",
+                "sub_eq": [
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x"
+                        }
+                    ],
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x{y"
+                        }
+                    ],
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x{y{z"
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "variable",
+                "value": "F"
+            },
+            {
+                "type": "operator",
+                "value": "_"
+            },
+            {
+                "type": "text",
+                "value": "aarde"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "="
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "number",
+                "value": "123"
+            },
+            {
+                "type": "variable",
+                "value": ","
+            },
+            {
+                "type": "number",
+                "value": "123E-2"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "m"
+            },
+            {
+                "type": "operator",
+                "value": "/"
+            },
+            {
+                "type": "braces",
+                "blocks": [
+                    {
+                        "type": "variable",
+                        "value": "s"
+                    },
+                    {
+                        "type": "operator",
+                        "value": "/"
+                    },
+                    {
+                        "type": "variable",
+                        "value": "kg"
+                    },
+                    {
+                        "type": "operator",
+                        "value": "^"
+                    },
+                    {
+                        "type": "number",
+                        "value": "2"
+                    }
+                ]
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "_"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "number",
+                "value": "456.789"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "m"
+            },
+            {
+                "type": "operator",
+                "value": "/"
+            },
+            {
+                "type": "variable",
+                "value": "s"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "*"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "function",
+                "name": "sqrt",
+                "sub_eq": [
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x"
+                        }
+                    ]
+                ]
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "+"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "function",
+                "name": "abs",
+                "sub_eq": [
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x"
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "variable",
+                "value": "F"
+            },
+            {
+                "type": "operator",
+                "value": "_"
+            },
+            {
+                "type": "variable",
+                "value": "z"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "="
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "number",
+                "value": "123"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "m"
+            },
+            {
+                "type": "operator",
+                "value": "/"
+            },
+            {
+                "type": "variable",
+                "value": "s"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "+"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "number",
+                "value": "456"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "m"
+            },
+            {
+                "type": "operator",
+                "value": "/"
+            },
+            {
+                "type": "braces",
+                "blocks": [
+                    {
+                        "type": "variable",
+                        "value": "s"
+                    },
+                    {
+                        "type": "operator",
+                        "value": "^"
+                    },
+                    {
+                        "type": "number",
+                        "value": "2"
+                    }
+                ]
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "*"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "number",
+                "value": "789"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "m"
+            },
+            {
+                "type": "operator",
+                "value": "/"
+            },
+            {
+                "type": "braces",
+                "blocks": [
+                    {
+                        "type": "variable",
+                        "value": "s"
+                    },
+                    {
+                        "type": "operator",
+                        "value": "/"
+                    },
+                    {
+                        "type": "variable",
+                        "value": "kg"
+                    },
+                    {
+                        "type": "operator",
+                        "value": "^"
+                    },
+                    {
+                        "type": "number",
+                        "value": "2"
+                    }
+                ]
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "-"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "function",
+                "name": "int",
+                "sub_eq": [
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x"
+                        }
+                    ],
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x{y"
+                        }
+                    ],
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x{y{z"
+                        }
+                    ]
+                ]
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "+"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "function",
+                "name": "sum",
+                "sub_eq": [
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x"
+                        }
+                    ],
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x{y"
+                        }
+                    ],
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x{y{z"
+                        }
+                    ]
+                ]
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "*"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "function",
+                "name": "sqrt",
+                "sub_eq": [
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x"
+                        }
+                    ]
+                ]
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "+"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "function",
+                "name": "abs",
+                "sub_eq": [
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x"
+                        }
+                    ]
+                ]
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "-"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "function",
+                "name": "ln",
+                "sub_eq": [
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x"
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "variable",
+                "value": "F"
+            },
+            {
+                "type": "operator",
+                "value": "_"
+            },
+            {
+                "type": "variable",
+                "value": "aarde"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "="
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "number",
+                "value": "123.123"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "m"
+            },
+            {
+                "type": "operator",
+                "value": "/"
+            },
+            {
+                "type": "braces",
+                "blocks": [
+                    {
+                        "type": "variable",
+                        "value": "s"
+                    },
+                    {
+                        "type": "operator",
+                        "value": "/"
+                    },
+                    {
+                        "type": "variable",
+                        "value": "kg"
+                    },
+                    {
+                        "type": "operator",
+                        "value": "^"
+                    },
+                    {
+                        "type": "number",
+                        "value": "2"
+                    }
+                ]
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "-"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "number",
+                "value": "456.789"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "m"
+            },
+            {
+                "type": "operator",
+                "value": "/"
+            },
+            {
+                "type": "variable",
+                "value": "s"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "^"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "number",
+                "value": "789"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "+"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "function",
+                "name": "sin",
+                "sub_eq": [
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x"
+                        }
+                    ]
+                ]
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "+"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "function",
+                "name": "cos",
+                "sub_eq": [
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x"
+                        }
+                    ]
+                ]
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "*"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "function",
+                "name": "ln",
+                "sub_eq": [
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x"
+                        }
+                    ]
+                ]
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "-"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "function",
+                "name": "log",
+                "sub_eq": [
+                    [
+                        {
+                            "type": "variable",
+                            "value": "base"
+                        }
+                    ],
+                    [
+                        {
+                            "type": "variable",
+                            "value": "base{x"
+                        }
+                    ]
+                ]
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "+"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "function",
+                "name": "abs",
+                "sub_eq": [
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x"
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    {
+        "input": [
+            {
+                "type": "variable",
+                "value": "F"
+            },
+            {
+                "type": "operator",
+                "value": "_"
+            },
+            {
+                "type": "text",
+                "value": "aarde"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "="
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "number",
+                "value": "123"
+            },
+            {
+                "type": "variable",
+                "value": ","
+            },
+            {
+                "type": "number",
+                "value": "123E-2"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "m"
+            },
+            {
+                "type": "operator",
+                "value": "/"
+            },
+            {
+                "type": "braces",
+                "blocks": [
+                    {
+                        "type": "variable",
+                        "value": "s"
+                    },
+                    {
+                        "type": "operator",
+                        "value": "/"
+                    },
+                    {
+                        "type": "variable",
+                        "value": "kg"
+                    },
+                    {
+                        "type": "operator",
+                        "value": "^"
+                    },
+                    {
+                        "type": "number",
+                        "value": "2"
+                    }
+                ]
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "_"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "number",
+                "value": "456.789"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "variable",
+                "value": "m"
+            },
+            {
+                "type": "operator",
+                "value": "/"
+            },
+            {
+                "type": "variable",
+                "value": "s"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "*"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "function",
+                "name": "sqrt",
+                "sub_eq": [
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x"
+                        }
+                    ]
+                ]
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "+"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "function",
+                "name": "abs",
+                "sub_eq": [
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x"
+                        }
+                    ]
+                ]
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "-"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "function",
+                "name": "ln",
+                "sub_eq": [
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x"
+                        }
+                    ]
+                ]
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "+"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "function",
+                "name": "sum",
+                "sub_eq": [
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x"
+                        }
+                    ],
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x{y"
+                        }
+                    ],
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x{y{z"
+                        }
+                    ]
+                ]
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "*"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "function",
+                "name": "int",
+                "sub_eq": [
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x"
+                        }
+                    ],
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x{y"
+                        }
+                    ],
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x{y{z"
+                        }
+                    ]
+                ]
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "-"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "function",
+                "name": "sin",
+                "sub_eq": [
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x"
+                        }
+                    ]
+                ]
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "+"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "function",
+                "name": "cos",
+                "sub_eq": [
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x"
+                        }
+                    ]
+                ]
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "*"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "function",
+                "name": "ln",
+                "sub_eq": [
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x"
+                        }
+                    ]
+                ]
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "-"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "function",
+                "name": "log",
+                "sub_eq": [
+                    [
+                        {
+                            "type": "variable",
+                            "value": "base"
+                        }
+                    ],
+                    [
+                        {
+                            "type": "variable",
+                            "value": "base{x"
+                        }
+                    ]
+                ]
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "operator",
+                "value": "+"
+            },
+            {
+                "type": "whitespace",
+                "value": " "
+            },
+            {
+                "type": "function",
+                "name": "abs",
+                "sub_eq": [
+                    [
+                        {
+                            "type": "variable",
+                            "value": "x"
+                        }
+                    ]
+                ]
+            }
+        ]
+    }
+]

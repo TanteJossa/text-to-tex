@@ -1,0 +1,176 @@
+[
+    {
+        "input": "123"
+    },
+    {
+        "input": "123.123"
+    },
+    {
+        "input": "123,123E-2"
+    },
+    {
+        "input": "f"
+    },
+    {
+        "input": "f'"
+    },
+    {
+        "input": "f\\{a"
+    },
+    {
+        "input": "f\\pi"
+    },
+    {
+        "input": "sin{x}"
+    },
+    {
+        "input": "cos{x}"
+    },
+    {
+        "input": "log{x}"
+    },
+    {
+        "input": "ln{x}"
+    },
+    {
+        "input": "sum{x}{y}{z}"
+    },
+    {
+        "input": "int{x}{y}{z}"
+    },
+    {
+        "input": "sqrt{x}"
+    },
+    {
+        "input": "abs{x}"
+    },
+    {
+        "input": "a + b"
+    },
+    {
+        "input": "a - b"
+    },
+    {
+        "input": "a * b"
+    },
+    {
+        "input": "a / b"
+    },
+    {
+        "input": "a^b"
+    },
+    {
+        "input": "a_b"
+    },
+    {
+        "input": "\"text \\\" test2\""
+    },
+    {
+        "input": "{2x}"
+    },
+    {
+        "input": "[kg]"
+    },
+    {
+        "input": "F_z = 123 m/s"
+    },
+    {
+        "input": "F_aarde = 123.123 m/{s^2}"
+    },
+    {
+        "input": "F_\"aarde\" = 123,123E-2 m/{s/kg^2}"
+    },
+    {
+        "input": "F_z = 123 m/s + 456 m/{s^2}"
+    },
+    {
+        "input": "F_aarde = 123.123 m/{s/kg^2} - 456.789 m/s"
+    },
+    {
+        "input": "F_\"aarde\" = 123,123E-2 m/{s/kg^2} * 456.789 m/s"
+    },
+    {
+        "input": "F_z = 123 m/s / 456 m/{s^2}"
+    },
+    {
+        "input": "F_aarde = 123.123 m/{s/kg^2} ^ 456.789 m/s"
+    },
+    {
+        "input": "F_\"aarde\" = 123,123E-2 m/{s/kg^2} _ 456.789 m/s"
+    },
+    {
+        "input": "a = b + c"
+    },
+    {
+        "input": "a = b - c"
+    },
+    {
+        "input": "a = b * c"
+    },
+    {
+        "input": "a = b / c"
+    },
+    {
+        "input": "a = b^c"
+    },
+    {
+        "input": "a = b_c"
+    },
+    {
+        "input": "sin{x} + cos{x}"
+    },
+    {
+        "input": "ln{x} * log{base}{x}"
+    },
+    {
+        "input": "sum{x}{y}{z} + int{x}{y}{z}"
+    },
+    {
+        "input": "sqrt{x} - abs{x}"
+    },
+    {
+        "input": "F_z = 123 m/s + 456 m/{s^2} * 789 m/{s/kg^2}"
+    },
+    {
+        "input": "F_aarde = 123.123 m/{s/kg^2} - 456.789 m/s ^ 789"
+    },
+    {
+        "input": "F_\"aarde\" = 123,123E-2 m/{s/kg^2} _ 456.789 m/s"
+    },
+    {
+        "input": "F_z = sin{x} + cos{x} * ln{x}"
+    },
+    {
+        "input": "F_aarde = log{base}{x} - abs{x} / 789"
+    },
+    {
+        "input": "F_\"aarde\" = sum{x}{y}{z} * int{x}{y}{z}"
+    },
+    {
+        "input": "F_z = sqrt{x} + abs{x} - 123 m/s"
+    },
+    {
+        "input": "F_aarde = 123.123 m/{s/kg^2} + 456.789 m/s ^ 789 * sin{x}"
+    },
+    {
+        "input": "F_\"aarde\" = 123,123E-2 m/{s/kg^2} _ 456.789 m/s + cos{x} - log{base}{x}"
+    },
+    {
+        "input": "F_z = 123 m/s + 456 m/{s^2} * 789 m/{s/kg^2} - int{x}{y}{z}"
+    },
+    {
+        "input": "F_aarde = 123.123 m/{s/kg^2} - 456.789 m/s ^ 789 + sum{x}{y}{z}"
+    },
+    {
+        "input": "F_\"aarde\" = 123,123E-2 m/{s/kg^2} _ 456.789 m/s * sqrt{x} + abs{x}"
+    },
+    {
+        "input": "F_z = 123 m/s + 456 m/{s^2} * 789 m/{s/kg^2} - int{x}{y}{z} + sum{x}{y}{z} * sqrt{x} + abs{x} - ln{x}"
+    },
+    {
+        "input": "F_aarde = 123.123 m/{s/kg^2} - 456.789 m/s ^ 789 + sin{x} + cos{x} * ln{x} - log{base}{x} + abs{x}"
+    },
+    {
+        "input": "F_\"aarde\" = 123,123E-2 m/{s/kg^2} _ 456.789 m/s * sqrt{x} + abs{x} - ln{x} + sum{x}{y}{z} * int{x}{y}{z} - sin{x} + cos{x} * ln{x} - log{base}{x} + abs{x}"
+    }
+]
