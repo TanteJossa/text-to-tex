@@ -105,7 +105,7 @@
                     return `{${convertBlocksToLatex(block.blocks, isUnit)}}`;
                 } else if (block.type === 'brackets') {
                     const unitBlocks = convertBlocksToLatex(block.blocks, true);
-                    return `\\text{ ${unitBlocks}}`;
+                    return ` ${unitBlocks}`;
                 } else if (block.type === 'function') {
                     if (block.sub_eq) {
                         const sub_eq = block.sub_eq.map(eq => convertBlocksToLatex(eq, isUnit));
