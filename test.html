@@ -67,7 +67,8 @@
         <div class="output-section" id="katex-output"></div>
         <div class="output-section" id="raw-tex-output"></div>
     </div>
-    <div class="output-section" id="block-data">
+    <div class="output-container">
+        <div class="output-section" id="text-output"></div>
     </div>
 
     <script>
@@ -113,11 +114,11 @@
                             const first = sub_eq[sub_eq.length - 1];
                             const second = sub_eq.length > 1 ? sub_eq[sub_eq.length - 2] : null;
                             const third = sub_eq.length > 2 ? sub_eq[sub_eq.length - 3] : null;
-                            return `\\${block.name}${third ? `_{${third}}` : ''}${second ? `^{${second}}` : ''} {${first}}`;
+                            return `\\${block.name}${third ? `_{${third}}` : ''}${second ? `^{${second}}` : ''}{${first}}`;
                         } else if (functionsWithSubscripts.includes(block.name)) {
                             const first = sub_eq[sub_eq.length - 1];
                             const second = sub_eq.length > 1 ? sub_eq[sub_eq.length - 2] : '';
-                            return `\\${block.name}${second ? `_{${second}}` : ''} {${first}}`;
+                            return `\\${block.name}${second ? `_{${second}}` : ''}{${first}}`;
                         } else if (functionsWithOneSubscript.includes(block.name)) {
                             const first = sub_eq[sub_eq.length - 1];
                             const second = sub_eq.length > 1 ? sub_eq[sub_eq.length - 2] : '';
@@ -346,10 +347,622 @@
             }
         }
 
+        function tokenizeLatex(latex) {
+            let tokens = [];
+            let i = 0;
+            const len = latex.length;
+
+            // Helper: parse a group delimited by { and } (allowing nesting)
+            function parseCurlyGroup() {
+                i++; // Skip the opening {
+                let content = "";
+                let depth = 1;
+                while (i < len && depth > 0) {
+                    if (latex[i] === "{") {
+                        depth++;
+                        content += latex[i];
+                        i++;
+                    } else if (latex[i] === "}") {
+                        depth--;
+                        if (depth > 0) {
+                            content += latex[i];
+                        }
+                        i++;
+                    } else {
+                        content += latex[i];
+                        i++;
+                    }
+                }
+                // Recursively tokenize the inner content.
+                return tokenizeLatex(content);
+            }
+
+            // Helper: parse a group delimited by [ and ] (allowing nesting)
+            function parseSquareGroup() {
+                i++; // Skip the opening [
+                let content = "";
+                let depth = 1;
+                while (i < len && depth > 0) {
+                    if (latex[i] === "[") {
+                        depth++;
+                        content += latex[i];
+                        i++;
+                    } else if (latex[i] === "]") {
+                        depth--;
+                        if (depth > 0) {
+                            content += latex[i];
+                        }
+                        i++;
+                    } else {
+                        content += latex[i];
+                        i++;
+                    }
+                }
+                return tokenizeLatex(content);
+            }
+            /* detectNumber scans text starting at index “start”
+            and tries to pick up a token matching:
+            {n digit number}
+            {optional: (dot or comma) or { (dot or comma) } followed by one or more digits}
+            {optional: whitespace, then "\cdot", whitespace, "10", whitespace, "^", "{", optional sign, digits, "}"}
+            It returns null if the first character isn’t a digit.
+            Otherwise it returns an object with { value: <token-string>, newIndex: <position after the token> } */
+            function detectNumber(text, start) {
+                let i = start,
+                    n = text.length;
+                let res = "";
+
+                // helper: returns true if ch is a digit
+                function isDigit(ch) {
+                    return ch >= "0" && ch <= "9";
+                }
+
+                // --- Parse the integer part (must have at least one digit) ---
+                let integerPart = "";
+                while (i < n && isDigit(text[i])) {
+                    integerPart += text[i];
+                    i++;
+                }
+                if (integerPart === "") return null; // no digit found at start
+                res += integerPart;
+
+                // --- Parse optional decimal separator and fraction ---
+                // We allow either a dot or comma (or a {dot/comma} form)
+                let separator = "";
+                let fraction = "";
+                if (i < n) {
+                    if (text[i] === "." || text[i] === ",") {
+                        separator = text[i];
+                        i++;
+                        let fracStart = i;
+                        while (i < n && isDigit(text[i])) {
+                            fraction += text[i];
+                            i++;
+                        }
+                        // If no digit follows the separator, we “roll back”
+                        if (fraction === "") {
+                            i = fracStart - 1; // back up over the separator
+                            separator = "";
+                        }
+                    } else if (text[i] === "{" && i + 2 < n && (text[i + 1] === "." || text[i + 1] === ",") && text[i + 2] === "}") {
+                        separator = text[i + 1];
+                        i += 3;
+                        let fracStart = i;
+                        while (i < n && isDigit(text[i])) {
+                            fraction += text[i];
+                            i++;
+                        }
+                        if (fraction === "") {
+                            i = fracStart - 3; // rollback the whole brace pattern
+                            separator = "";
+                        }
+                    }
+                }
+                if (separator !== "") {
+                    res += separator + fraction;
+                }
+
+                // --- Look for an optional exponent part ---
+                // Save where we are before “consuming” whitespace for the exponent:
+                let savedIndex = i;
+                while (i < n && /\s/.test(text[i])) {
+                    i++;
+                } // skip white space
+
+                var next_exp = "\\cdot"
+                if (text.slice(i, i + next_exp.length) === next_exp) {
+                    let expStr = "";
+                    // (Include any whitespace that was skipped if you wish)
+                    expStr += text.slice(savedIndex, i);
+                    expStr += text.slice(i, i + next_exp.length); // the "\cdot"
+                    i += next_exp.length;
+
+
+                    // Skip whitespace after "\cdot"
+                    while (i < n && /\s/.test(text[i])) {
+                        expStr += text[i];
+                        i++;
+                    }
+
+
+                    // Expect "10"
+                    if (text.slice(i, i + 2) !== "10") {
+                        i = savedIndex; // exponent part not valid, so back out
+                        return {
+                            value: res,
+                            newIndex: i
+                        };
+                    }
+                    expStr += "10";
+                    i += 2;
+
+                    while (i < n && /\s/.test(text[i])) {
+                        expStr += text[i];
+                        i++;
+                    }
+                    // Expect a caret '^'
+                    if (i < n && text[i] === "^") {
+                        expStr += "^";
+                        i++;
+                    } else {
+                        i = savedIndex;
+                        return {
+                            value: res,
+                            newIndex: i
+                        };
+                    }
+                    // Expect an opening brace '{'
+                    if (i < n && text[i] === "{") {
+                        expStr += "{";
+                        i++;
+                    } else {
+                        i = savedIndex;
+                        return {
+                            value: res,
+                            newIndex: i
+                        };
+                    }
+                    // Read an exponent number: optional "+" or "-" then at least one digit
+                    let expDigits = "";
+                    if (i < n && (text[i] === "+" || text[i] === "-")) {
+                        expDigits += text[i];
+                        expStr += text[i];
+                        i++;
+                    }
+                    if (i < n && isDigit(text[i])) {
+                        while (i < n && isDigit(text[i])) {
+                            expDigits += text[i];
+                            expStr += text[i];
+                            i++;
+                        }
+                    } else {
+                        i = savedIndex;
+                        return {
+                            value: res,
+                            newIndex: i
+                        };
+                    }
+                    // Expect a closing brace '}'
+                    if (i < n && text[i] === "}") {
+                        expStr += "}";
+                        i++;
+                    } else {
+                        i = savedIndex;
+                        return {
+                            value: res,
+                            newIndex: i
+                        };
+                    }
+                    // Append the valid exponent part:
+                    res += expStr;
+                } else {
+                    // No exponent part: revert to savedIndex so that any whitespace skipped isn’t “eaten”
+                    i = savedIndex;
+                }
+
+                return {
+                    value: res,
+                    newIndex: i
+                };
+            }
+
+            /* convertToScientificFormat takes one of the tokens produced by detectNumber
+            and returns a converted version:
+            • When there is no exponent part, it replaces any dot with a comma.
+            • When an exponent was found (look for "\cdot"), it extracts the exponent number
+            and returns:  {base} + "E" + {exponent number}
+        
+            Examples:
+            "3"                → "3"
+            "3,4"              → "3,4"
+            "3{,}4" (detected as "3,4") → "3,4"
+            "10.10"            → "10,10"
+            "10.10 \cdot 10^{-10}"  → "10.10E-10"
+            */
+            function convertToScientificFormat(numStr) {
+                if (numStr == null) return null;
+                // If there is an exponent part, look for "\cdot"
+                if (numStr.indexOf("\\cdot") !== -1) {
+                    // Let the base be what comes before "\cdot":
+                    let base = numStr.slice(0, numStr.indexOf("\\cdot")).trim();
+                    // In the exponent part we expect a pattern like: "\cdot 10^{...}"
+                    // We simply locate the first "{" and the last "}" and extract what is between.
+                    let braceOpen = numStr.indexOf("{");
+                    let braceClose = numStr.lastIndexOf("}");
+                    if (braceOpen !== -1 && braceClose !== -1 && braceClose > braceOpen) {
+                        let exponent = numStr.substring(braceOpen + 1, braceClose);
+                        return base + "E" + exponent;
+                    } else {
+                        return numStr; // not as expected; return the original string
+                    }
+                } else {
+                    // No exponent part: simply change every dot into a comma.
+                    // (If you want to change only the first occurrence, you might use replace; here we convert all.)
+                    return numStr.split(".").join(",");
+                }
+            }
+
+
+            // Main loop: iterate through the LaTeX string
+            while (i < len) {
+                let ch = latex[i];
+
+                // Handle whitespace (we preserve it as its own tokens)
+                if (/\s/.test(ch)) {
+                    tokens.push({
+                        type: "whitespace",
+                        value: ch
+                    });
+                    i++;
+                    continue;
+                }
+
+                // Special: division formatted as \dfrac{numerator}{denominator}
+                if (latex.slice(i).startsWith("\\dfrac")) {
+                    i += "\\dfrac".length;
+                    // Skip any intervening whitespace
+                    while (i < len && /\s/.test(latex[i])) {
+                        i++;
+                    }
+                    let numerator = [];
+                    if (latex[i] === "{") {
+                        numerator = parseCurlyGroup();
+                    }
+                    while (i < len && /\s/.test(latex[i])) {
+                        i++;
+                    }
+                    let denominator = [];
+                    if (latex[i] === "{") {
+                        denominator = parseCurlyGroup();
+                    }
+                    tokens.push({
+                        type: "operator",
+                        value: "/",
+                        numerator: numerator,
+                        denominator: denominator
+                    });
+                    continue;
+                }
+
+                // Special: multiplication formatted as \cdot (our forward conversion uses it for '*')
+                if (latex.slice(i).startsWith("\\cdot")) {
+                    tokens.push({
+                        type: "operator",
+                        value: "*"
+                    });
+                    i += "\\cdot".length;
+                    continue;
+                }
+
+                // Special: text block formatted as \text{...}
+                if (latex.slice(i).startsWith("\\text{")) {
+                    i += "\\text{".length;
+                    let textContent = "";
+                    let depth = 1;
+                    while (i < len && depth > 0) {
+                        if (latex[i] === "{") {
+                            depth++;
+                            textContent += latex[i];
+                            i++;
+                        } else if (latex[i] === "}") {
+                            depth--;
+                            if (depth > 0) {
+                                textContent += latex[i];
+                            }
+                            i++;
+                        } else {
+                            textContent += latex[i];
+                            i++;
+                        }
+                    }
+                    tokens.push({
+                        type: "text",
+                        value: textContent
+                    });
+                    continue;
+                }
+
+                // Special: functions – they start with a backslash followed by alphabetic letters.
+                if (ch === "\\") {
+                    let funcMatch = latex.slice(i).match(/^\\[a-zA-Z]+/);
+                    if (funcMatch) {
+                        let fullCmd = funcMatch[0];
+                        let funcName = fullCmd.slice(1); // remove the backslash
+
+                        // List of special functions as defined in the formatting instructions.
+                        let specialFunctions = [
+                            "sin", "cos", "log", "ln", "sum", "int", "sqrt", "abs",
+                            "arcsin", "arctan", "arccos", "arg", "cos", "cosh", "cot", "coth",
+                            "csc", "deg", "det", "dim", "exp", "gcd", "hom", "inf", "ker", "lg",
+                            "lim", "liminf", "limsup", "max", "min", "Pr", "sec", "tan", "tanh", "sup"
+                        ];
+
+                        // If the command is one of our special functions, process its groups.
+                        if (specialFunctions.includes(funcName)) {
+                            i += fullCmd.length; // Consume the function command
+                            let sub_eq = [];
+                            // Check for optional superscript (^) and subscript (_) groups.
+                            while (i < len && (latex[i] === "_" || latex[i] === "^")) {
+                                let op = latex[i];
+                                i++; // consume '_' or '^'
+
+                                if (latex[i] === "{") {
+                                    let groupTokens = parseCurlyGroup();
+                                    sub_eq.push({
+                                        type: op === "_" ? "subscript" : "superscript",
+                                        blocks: groupTokens
+                                    });
+                                }
+                            }
+                            // Now, check for the main argument group (if present).
+                            if (i < len && latex[i] === "{") {
+                                let groupTokens = parseCurlyGroup();
+                                sub_eq.push({
+                                    type: "argument",
+                                    blocks: groupTokens
+                                });
+                            }
+                            tokens.push({
+                                type: "function",
+                                name: funcName,
+                                sub_eq: sub_eq
+                            });
+                            continue;
+                        } else {
+                            // Not a special function? Could be a special variable like \pi, or an operator command.
+                            tokens.push({
+                                type: "variable",
+                                value: fullCmd
+                            });
+                            i += fullCmd.length;
+                            continue;
+                        }
+                    }
+                }
+
+                // If we see an opening curly brace, treat it as a subequation wrapped in braces.
+                if (ch === "{") {
+                    let groupTokens = parseCurlyGroup();
+                    tokens.push({
+                        type: "braces",
+                        blocks: groupTokens
+                    });
+                    continue;
+                }
+
+                // If we see an opening square bracket, that indicates a unit/tags group.
+                if (ch === "[") {
+                    let groupTokens = parseSquareGroup();
+                    tokens.push({
+                        type: "brackets",
+                        blocks: groupTokens,
+                        is_unit: true
+                    });
+                    continue;
+                }
+
+                // Check for numbers.
+                // Expected pattern: one or more digits, optionally with a "{,}" as a decimal separator,
+                // and optionally an exponent formatted as " \cdot 10^{...}".
+                const response = detectNumber(latex, i);
+
+                if (response) {
+                    tokens.push({
+                        type: "number",
+                        value: convertToScientificFormat(response.value)
+                    });
+                    i = response.newIndex;
+                    continue;
+                }
+
+
+                // Check for equallike operators – note the multi‐character operators are prioritized.
+                const opList = ["<=", ">=", "\\neq", "\\or", "\\vee", "\\and", "\\wedge", "=", "<", ">", "+", "-", "*", "/", "^", "_"];
+                let opFound = false;
+                for (let op of opList) {
+                    if (latex.slice(i, i + op.length) === op) {
+                        tokens.push({
+                            type: "operator",
+                            value: op
+                        });
+                        i += op.length;
+                        opFound = true;
+                        break;
+                    }
+                }
+                if (opFound) continue;
+
+                // Otherwise, treat contiguous letters/digits (and apostrophes, backslashes) as a variable.
+                let varMatch = latex.slice(i).match(/^[a-zA-Z0-9'\\]+/);
+                if (varMatch) {
+                    tokens.push({
+                        type: "variable",
+                        value: varMatch[0]
+                    });
+                    i += varMatch[0].length;
+                    continue;
+                }
+
+                // If nothing else matches, push the single character as a variable token.
+                tokens.push({
+                    type: "variable",
+                    value: ch
+                });
+                i++;
+            }
+            return tokens;
+        }
+
+        function blockToText(tokens, is_sub_eq = false, is_text = null) {
+            var output = "";
+            var tempStr = "";
+
+
+            // Flush the accumulated text (if any) into the output,
+            // wrapped in square brackets.
+            function flushTemp() {
+
+                is_text = false
+                if (tempStr !== "") {
+                    output += "[" + tempStr + "]";
+                    tempStr = "";
+
+                }
+            
+            }
+
+            const addToOutput = (text) => {
+                if (is_text) {
+                    tempStr += text;
+                } else {
+                    output += text;
+
+                }
+            }
+
+            for (var i = 0; i < tokens.length; i++) {
+                var token = tokens[i];
+
+                // If it is a text block then accumulate its conversion.
+                if (token.type === "text") {
+                    if (!is_sub_eq || is_text || is_text === null){
+                        is_text = true
+                        addToOutput(token.value + " ")
+                        continue
+                    }
+                    addToOutput('"'+token.value+'"')
+                } else {
+                    // Before handling any non-text token, flush out any text we've accumulated.
+                    if (token.type === "whitespace") {
+                        addToOutput(token.value);
+                    } else if (token.type === "operator") {
+                        switch (token.value) {
+                            case "/":
+                                const [num, num_is_text] = blockToText(token.numerator, true)
+                                const [den, den_is_text] = blockToText(token.denominator, true)
+
+
+                                if (!num_is_text || !den_is_text) {
+                                    flushTemp()
+                                }
+                                if (num_is_text !== false && den_is_text !== false) {
+                                    is_text = true
+                                }
+                                console.log(num_is_text, den_is_text, is_text)
+
+                                addToOutput("\\dfrac{" + blockToText(token.numerator, false, !!is_text) + "}{" + blockToText(token.denominator, false, !!is_text) + "}");
+
+                                break;
+
+                            default:
+                                addToOutput(token.value);
+
+                                break;
+                        }
+                    } else if (token.type === "variable") {
+                        flushTemp();
+                        addToOutput(token.value)
+                    } else if (token.type === "number") {
+                        let input = token.value;
+
+                        // Replace 3{,}4 \cdot 10^{-2} with 3,4E-2
+                        input = input.replace(/(\d+)\{,\}(\d+) \\cdot 10\^{(-?\d+)}/g, '$1,$2E$3');
+
+                        // Replace 3 \cdot 10^{-4} with 3E-4
+                        input = input.replace(/(\d+) \\cdot 10\^{(-?\d+)}/g, '$1E$2');
+
+                        // Replace 3{,}3 with 3,3
+                        input = input.replace(/(\d+)\{,\}(\d+)/g, '$1,$2');
+
+                        // Replace 3,3 with 3,3 (no change needed, but included for completeness)
+                        // input = input.replace(/(\d+),(\d+)/g, '$1,$2'); // This line is redundant
+
+                        // Replace 3.3 with 3.3 (no change needed, but included for completeness)
+                        // input = input.replace(/(\d+)\.(\d+)/g, '$1.$2'); // This line is redundant
+                        addToOutput(input);
+                    } else if (token.type === "braces") {
+                        // Convert inner blocks and wrap with { ... }.
+                        const [text, sub_eq_is_text] = blockToText(token.blocks, true, is_text)
+                        if (!sub_eq_is_text) {
+                            flushTemp()
+                        }
+                        addToOutput("{" + text + "}")
+                    } else if (token.type === "brackets") {
+                        const [text, sub_eq_is_text] = blockToText(token.blocks, true, is_text)
+                        if (!sub_eq_is_text) {
+                            flushTemp()
+                        }
+                        addToOutput("[" + text + "]")
+
+                        // Convert inner blocks and wrap with [ ... ]. (This is our “square braces correctly” rule.)
+                    } else if (token.type === "function") {
+                        // Convert function tokens by outputting the backslash plus name,
+                        // then each of its sub_equation groups.
+                        var funcStr = token.name;
+                        if (token.sub_eq && token.sub_eq.length > 0) {
+                            var is_texts = []
+                            token.sub_eq.forEach(function (sub) {
+                                const [text, sub_eq_is_text] = blockToText(sub.blocks, true)
+                                is_texts.push(sub_eq_is_text)
+
+                                if (sub.type === "subscript") {
+                                    funcStr += "{" + text + "}";
+                                } else if (sub.type === "superscript") {
+                                    funcStr += "{" + text + "}";
+                                } else if (sub.type === "argument") {
+                                    funcStr += "{" + text + "}";
+                                }
+                            });
+                            if (is_texts.includes(false)) {
+                                flushTemp()
+                            }
+                        }
+                        addToOutput(funcStr)
+                    } else {
+                        addToOutput(token.value || "")
+                        // Anything else: if there is some value, just output it.
+                    }
+                }
+            }
+            if (!is_sub_eq) {
+
+                // Flush any remaining accumulated text.
+                flushTemp();
+                return output;
+            } else {
+
+                return [output + tempStr, is_text];
+            }
+        }
+
+        function latexToText(latex){
+            return blockToText(tokenizeLatex(latex));
+        }
 
         const input = document.getElementById('input');
         const katexOutput = document.getElementById('katex-output');
         const rawTexOutput = document.getElementById('raw-tex-output');
+        const textOutput = document.getElementById('text-output');
         const errorMessage = document.getElementById('error-message');
         const tokens = document.getElementById('block-data');
 
@@ -360,10 +973,13 @@
 
             try {
                 const tokens = tokenize(inputText);
-                console.log(tokens)
+                console.log('latex: ', tokens)
                 tokens.textContent = JSON.stringify(tokens, null, 2);
                 const latex = textToLatex(inputText);
                 rawTexOutput.textContent = latex;
+                const text_tokens = tokenizeLatex(latex);
+                console.log('text: ', text_tokens)
+                textOutput.textContent = blockToText(text_tokens);
                 katex.render(latex, katexOutput, {
                     throwOnError: false,
                     displayMode: true // Improved display

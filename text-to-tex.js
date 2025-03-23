@@ -45,11 +45,11 @@ function convertBlocksToLatex(blocks, isUnit = false) {
                     const first = sub_eq[sub_eq.length - 1];
                     const second = sub_eq.length > 1 ? sub_eq[sub_eq.length - 2] : null;
                     const third = sub_eq.length > 2 ? sub_eq[sub_eq.length - 3] : null;
-                    return `\\${block.name}${third ? `_{${third}}` : ''}${second ? `^{${second}}` : ''} {${first}}`;
+                    return `\\${block.name}${third ? `_{${third}}` : ''}${second ? `^{${second}}` : ''}{${first}}`;
                 } else if (functionsWithSubscripts.includes(block.name)) {
                     const first = sub_eq[sub_eq.length - 1];
                     const second = sub_eq.length > 1 ? sub_eq[sub_eq.length - 2] : '';
-                    return `\\${block.name}${second ? `_{${second}}` : ''} {${first}}`;
+                    return `\\${block.name}${second ? `_{${second}}` : ''}{${first}}`;
                 } else if (functionsWithOneSubscript.includes(block.name)) {
                     const first = sub_eq[sub_eq.length - 1];
                     const second = sub_eq.length > 1 ? sub_eq[sub_eq.length - 2] : '';
