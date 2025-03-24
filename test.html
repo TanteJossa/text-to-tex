@@ -92,10 +92,10 @@
                     return value;
                 } else if (block.type === 'operator') {
                     switch (block.value) {
-                        case '+': return '+';
-                        case '-': return '-';
-                        case '*': return '\\cdot ';
-                        case '/': return '\\dfrac{';
+                        case '+': return ' + ';
+                        case '-': return ' - ';
+                        case '*': return ' \\cdot ';
+                        case '/': return ' \\dfrac{';
                         default: return block.value; // For equallike operators
                     }
                 } else if (block.type === 'variable') {
@@ -351,6 +351,31 @@
             let tokens = [];
             let i = 0;
             const len = latex.length;
+
+           // Helper: parse a group delimited by { and } (allowing nesting)
+            function parseParenthesesGroup() {
+                i++; // Skip the opening {
+                let content = "";
+                let depth = 1;
+                while (i < len && depth > 0) {
+                    if (latex[i] === "(") {
+                        depth++;
+                        content += latex[i];
+                        i++;
+                    } else if (latex[i] === ")") {
+                        depth--;
+                        if (depth > 0) {
+                            content += latex[i];
+                        }
+                        i++;
+                    } else {
+                        content += latex[i];
+                        i++;
+                    }
+                }
+                // Recursively tokenize the inner content.
+                return tokenizeLatex(content);
+            }
 
             // Helper: parse a group delimited by { and } (allowing nesting)
             function parseCurlyGroup() {
@@ -722,6 +747,17 @@
                                     blocks: groupTokens
                                 });
                             }
+                            // Now, check for the main argument group (if present).
+                            if (i < len && latex[i] === "(") {
+                                let groupTokens = parseParenthesesGroup();
+                                if (groupTokens.length == 1 && groupTokens[0].type == 'braces'){
+                                    groupTokens = groupTokens[0].blocks
+                                }
+                                sub_eq.push({
+                                    type: "argument",
+                                    blocks: groupTokens
+                                });
+                            }
                             tokens.push({
                                 type: "function",
                                 name: funcName,
@@ -793,7 +829,7 @@
                 if (opFound) continue;
 
                 // Otherwise, treat contiguous letters/digits (and apostrophes, backslashes) as a variable.
-                let varMatch = latex.slice(i).match(/^[a-zA-Z0-9'\\]+/);
+                let varMatch = latex.slice(i).match(/^[a-zA-Z0-9']+/);
                 if (varMatch) {
                     tokens.push({
                         type: "variable",
@@ -813,31 +849,15 @@
             return tokens;
         }
 
-        function blockToText(tokens, is_sub_eq = false, is_text = null) {
+        function blockToText(tokens) {
             var output = "";
-            var tempStr = "";
 
-
-            // Flush the accumulated text (if any) into the output,
-            // wrapped in square brackets.
-            function flushTemp() {
-
-                is_text = false
-                if (tempStr !== "") {
-                    output += "[" + tempStr + "]";
-                    tempStr = "";
-
-                }
-            
-            }
 
             const addToOutput = (text) => {
-                if (is_text) {
-                    tempStr += text;
-                } else {
-                    output += text;
 
-                }
+                output += text;
+
+                
             }
 
             for (var i = 0; i < tokens.length; i++) {
@@ -845,11 +865,6 @@
 
                 // If it is a text block then accumulate its conversion.
                 if (token.type === "text") {
-                    if (!is_sub_eq || is_text || is_text === null){
-                        is_text = true
-                        addToOutput(token.value + " ")
-                        continue
-                    }
                     addToOutput('"'+token.value+'"')
                 } else {
                     // Before handling any non-text token, flush out any text we've accumulated.
@@ -858,19 +873,8 @@
                     } else if (token.type === "operator") {
                         switch (token.value) {
                             case "/":
-                                const [num, num_is_text] = blockToText(token.numerator, true)
-                                const [den, den_is_text] = blockToText(token.denominator, true)
 
-
-                                if (!num_is_text || !den_is_text) {
-                                    flushTemp()
-                                }
-                                if (num_is_text !== false && den_is_text !== false) {
-                                    is_text = true
-                                }
-                                console.log(num_is_text, den_is_text, is_text)
-
-                                addToOutput("\\dfrac{" + blockToText(token.numerator, false, !!is_text) + "}{" + blockToText(token.denominator, false, !!is_text) + "}");
+                                addToOutput(" {" + blockToText(token.numerator) + "}/{" + blockToText(token.denominator) + "} ");
 
                                 break;
 
@@ -880,7 +884,6 @@
                                 break;
                         }
                     } else if (token.type === "variable") {
-                        flushTemp();
                         addToOutput(token.value)
                     } else if (token.type === "number") {
                         let input = token.value;
@@ -902,16 +905,11 @@
                         addToOutput(input);
                     } else if (token.type === "braces") {
                         // Convert inner blocks and wrap with { ... }.
-                        const [text, sub_eq_is_text] = blockToText(token.blocks, true, is_text)
-                        if (!sub_eq_is_text) {
-                            flushTemp()
-                        }
+                        const text = blockToText(token.blocks)
+
                         addToOutput("{" + text + "}")
                     } else if (token.type === "brackets") {
-                        const [text, sub_eq_is_text] = blockToText(token.blocks, true, is_text)
-                        if (!sub_eq_is_text) {
-                            flushTemp()
-                        }
+                        const text = blockToText(token.blocks)
                         addToOutput("[" + text + "]")
 
                         // Convert inner blocks and wrap with [ ... ]. (This is our “square braces correctly” rule.)
@@ -922,8 +920,7 @@
                         if (token.sub_eq && token.sub_eq.length > 0) {
                             var is_texts = []
                             token.sub_eq.forEach(function (sub) {
-                                const [text, sub_eq_is_text] = blockToText(sub.blocks, true)
-                                is_texts.push(sub_eq_is_text)
+                                const text = blockToText(sub.blocks, true)
 
                                 if (sub.type === "subscript") {
                                     funcStr += "{" + text + "}";
@@ -933,9 +930,6 @@
                                     funcStr += "{" + text + "}";
                                 }
                             });
-                            if (is_texts.includes(false)) {
-                                flushTemp()
-                            }
                         }
                         addToOutput(funcStr)
                     } else {
@@ -944,15 +938,10 @@
                     }
                 }
             }
-            if (!is_sub_eq) {
 
-                // Flush any remaining accumulated text.
-                flushTemp();
-                return output;
-            } else {
+            // Flush any remaining accumulated text.
+            return output;
 
-                return [output + tempStr, is_text];
-            }
         }
 
         function latexToText(latex){

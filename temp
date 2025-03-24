@@ -1,0 +1,91 @@
+            hugerte.PluginManager.add('dollar_sign_detector', (editor, url) => {
+                let previewElement = null;
+
+                // Function to create the preview element
+                const createPreviewElement = (text) => {
+                    if (previewElement) {
+                        previewElement.remove();
+                    }
+                    previewElement = document.createElement('span');
+                    previewElement.style.position = 'absolute';
+                    previewElement.style.backgroundColor = 'white';
+                    previewElement.style.padding = '2px';
+                    previewElement.style.borderRadius = '3px'
+                    previewElement.style.boxShadow = "0 0 5px #999999"
+                    previewElement.style.border = '1px solid black';
+                    previewElement.style.zIndex = 1000;
+
+                    const raw_text = text.trim('$')
+
+
+                    const dom_el = this.getExpressionMarkup(raw_text)
+
+
+                    previewElement.innerHTML = dom_el;
+                    editor.getContainer().appendChild(previewElement);
+                    return previewElement
+                }
+
+                // Function to remove the preview element
+                function removePreviewElement() {
+                    if (previewElement) {
+                        previewElement.remove();
+                        previewElement = null;
+                    }
+                }
+
+                // Function to check if the cursor is between non-backslash-escaped single or double dollar signs
+                function checkCursor() {
+                    const selection = editor.selection;
+                    const rng = selection.getRng();
+                    const node = rng.startContainer;
+                    const offset = rng.startOffset;
+
+                    if (node.nodeType === Node.TEXT_NODE) {
+                        const text = node.nodeValue;
+                        let start = offset - 1;
+                        let end = offset + 1;
+
+                        // Find the start of the text block
+                        while (start >= 0 && (text[start] !== '$' || (text[start] === '$' && text[start - 1] === '\\'))) {
+                            start--;
+                        }
+
+                        // Find the end of the text block
+                        while (end < text.length && (text[end] !== '$' || (text[end] === '$' && text[end + 1] === '\\'))) {
+                            end++;
+                        }
+
+                        // Extract the text between the dollar signs, including the dollar signs
+                        const previewText = text.substring(start, end + 1);
+
+                        // Check if the cursor is within the detected block
+                        if (previewText.startsWith('$') && previewText.endsWith('$')) {
+
+                            // Create and position the preview element
+                            const previewElement = createPreviewElement(previewText);
+
+                            // Position the preview element 5 pixels above the cursor
+                            const rect = rng.getBoundingClientRect();
+                            const output_rect = previewElement.getBoundingClientRect()
+                            console.log(rect, output_rect, previewElement.offsetHeight, previewElement.height)
+                            previewElement.style.left = `${rect.left + rect.width / 2 - previewElement.offsetWidth / 2}px`;
+                            previewElement.style.top = `${rect.bottom + rect.height + 35}px`;
+                        } else {
+                            removePreviewElement();
+                        }
+                    } else {
+                        removePreviewElement();
+                    }
+                }
+
+                // Add event listeners for cursor movement
+                editor.on('click keydown', function () {
+                    setTimeout(checkCursor, 0); // Use setTimeout to ensure the cursor position is updated
+                });
+
+                // Check cursor position on initialization
+                editor.on('init', function () {
+                    setTimeout(checkCursor, 0);
+                });
+            });
